@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    {% load crispy_forms_tags %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/fees.css' %}">
+    
+    <title>Fees Details</title>
+</head>
+<body>
+    <h1> 6. Add Fees Details.... </h1><br><hr><br>
+
+    <form action="" method="POST"> {% csrf_token %}
+
+        {{ forms | crispy }}
+
+    <a href="/list/"><button class="btn btn-primary" type="Submit"> Submit </button></a>
+
+
+    </form>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+        const totalFees = document.getElementById('id_Total_Fees');
+        const paidFees = document.getElementById('id_Paid_Fees');
+        const dueFees = document.getElementById('id_Due_Fees');
+
+        function updateDueFees() {
+            const total = parseInt(totalFees.value) || 0;
+            const paid = parseInt(paidFees.value) || 0;
+            const due = total - paid;
+            dueFees.value = due >= 0 ? due : 0;
+        }
+
+        if (totalFees && paidFees && dueFees) {
+            totalFees.addEventListener('input', updateDueFees);
+            paidFees.addEventListener('input', updateDueFees);
+        }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* Page background */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    margin: 0;
+    padding: 0;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px;
+    color: #0d6efd;
+}
+
+/* Form container */
+form {
+    max-width: 650px;
+    background: white;
+    padding: 25px;
+    margin: 30px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Submit button */
+form .btn {
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Hover effect */
+form .btn:hover {
+    background-color: #084298;
+}

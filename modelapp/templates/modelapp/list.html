@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <title>Student List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+</head>
+<body>
+<div class="heaven-container">
+    <h1 class="heaven-heading">📚 List of All Students</h1> 
+
+    <!-- 🔍 Search and Sort -->
+    <form method="GET" class="search-sort-form">
+        <input type="text" name="search" placeholder="Search by name..." value="{{ search_query }}">
+        <select name="sort">
+            <option value="name" {% if sort_by == "name" %}selected{% endif %}>Sort by Name</option>
+            <option value="age" {% if sort_by == "age" %}selected{% endif %}>Sort by Age</option>
+        </select>
+        <button type="submit">Apply</button>
+    </form>
+
+    <!-- 🧒 Student List -->
+    <div class="student-list">
+        {% for obj in data %}
+            <a class="student-entry" href="/detail/{{ obj.id }}/">
+                {% if obj.Photo %}
+                    <img src="{{ obj.Photo.url }}" class="student-img" alt="{{ obj.Name }}">
+                {% else %}
+                    <img src="{% static 'img/default-avatar.png' %}" class="student-img" alt="Default">
+                {% endif %}
+                <span>{{ obj.Name }} — Age: {{ obj.Age }}</span> 
+            </a>
+        {% empty %}
+            <p class="no-student">No students found.</p>
+        {% endfor %}
+    </div>
+
+    <div class="action-buttons text-end mt-4">
+        <a class="btn btn-primary me-2" href="/add/" type="submit">➕ Add New Student</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-primary" href="/home/" type="submit">🏠 Back to Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+
+</div>
+</body>
+</html>

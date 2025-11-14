@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1 style="text-align: center; color: burlywood;"> Here is the details about Student "{{obj.Name}}"</h1><hr>
+
+    <div class="container" style="text-align: center; color: cornflowerblue; margin-top: 50px;">
+
+        <h1> Student Personal Details Are : </h1><br>
+
+        <h3> Student Name is                 : {{obj.Name}}</h3>
+        <h3> Student Gender is               : {{obj.Gender}}</h3>
+        <h3> Student Date of Birth is        : {{obj.DOB}}</h3>
+        <h3> Student Age is                  : {{obj.Age}} Years</h3>
+        <h3> Student Blood Group is          : {{obj.Blood_Group}}</h3>
+        <h3> Student Nationality is          : {{obj.Nationality}}</h3>
+        <h3> Student Category is             : {{obj.Category}}</h3>
+        <h3> Student Religion is             : {{obj.Religion}}</h3><br><hr><br>
+
+
+        <h1> Student Contact Information : </h1><br>
+        <h3> Student Phone Number is         : {{obj.Phone_Number}}</h3>
+        <h3> Student Email ID is             : {{obj.Email}}</h3>
+        <h3> Student Address is              : {{obj.Address}}</h3><br><hr><br>
+
+
+        <h1> Student Parents Details : </h1><br>
+        <h3> Student Father Name is          : {{obj.Father_Name}}</h3>
+        <h3> Student Father Occupation is    : {{obj.Father_Occupation}}</h3>
+        <h3> Student Mother Name is          : {{obj.Mother_Name}}</h3>
+        <h3> Student Mother Occupation is    : {{obj.Mother_Occupation}}</h3>
+        <h3> Student's Parents Address is    : {{obj.Parents_Address}}</h3><br><hr><br>
+
+
+        <h1> Student Academic Details : </h1><br>
+        <h3> Student Id is                   : {{obj.student_id}}</h3>
+        <h3> Student Roll Number is          : {{obj.Roll_Number}}</h3>
+        <h3> Student Marks is                : {{obj.Marks}}</h3><br><hr><br>
+        
+        
+        <h1> Student Course Details : </h1><br>
+        <h3> Student Department is                  : {{obj.Department}}</h3>
+        <h3> Assigned Teacher to the Student is     : {{obj.Assigned_Teacher}}</h3><br><hr><br>
+
+
+        <h1> Student Fees Details : </h1><br>
+        <h3> Student Total Fees is        : Rs. {{obj.Total_Fees}}</h3>
+        <h3> Student Paid Fees is         : Rs. {{obj.Paid_Fees}}</h3>
+        <h3> Student Remaining Fees is    : Rs. {{obj.Due_Fees}}</h3><br><hr><br>
+
+        {% if obj.Photo %}
+            <img src="{{ obj.Photo.url }}" alt="Profile Image" Width="200">
+        {% else %}
+            <p> NO Image Uploaded. </p>
+        {% endif %}
+        
+    </div><hr>
+
+    <div class="container" style="text-align: center;">
+        <a class="btn btn-warning " href="/update/{{obj.id}}/" role="button"> Update + </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-danger " href="/delete/{{obj.id}}/" role="button"> Delete - </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+
+</body>
+</html>
